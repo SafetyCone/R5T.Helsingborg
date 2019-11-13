@@ -1,4 +1,6 @@
 R5T.Helsingborg - A "Hello World!" application useful for testing hello-world capabilities.
 
+Prints "Hello World!" repeatedly, every second, to the console.
+
 Goals
 
