@@ -15,6 +15,7 @@ namespace R5T.Helsingborg
             //Console.WriteLine($"{nameof(Debugger)}.{nameof(Debugger.Break)}");
             //Debugger.Break();
 
+            // This DOES work in a remote debugger.
             Console.WriteLine("Debugger attach point.");
             while(!Debugger.IsAttached)
             {
