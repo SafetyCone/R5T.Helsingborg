@@ -11,18 +11,29 @@ namespace R5T.Helsingborg
     {
         static void Main(string[] args)
         {
+            var writer = Console.Out;
+            var reader = Console.In;
+
             //// Does not work in remote debugger.
             //Console.WriteLine($"{nameof(Debugger)}.{nameof(Debugger.Break)}");
             //Debugger.Break();
 
             // This DOES work in a remote debugger.
-            Console.WriteLine("Debugger attach point.");
+            writer.WriteLine("Debugger attach point.");
             while(!Debugger.IsAttached)
             {
-                Console.WriteLine("Waiting for debugger to attach...");
+                writer.WriteLine("Waiting for debugger to attach...");
+                writer.WriteLine("(Or press enter to continue)");
 
-                Thread.Sleep(1000);
+                var line = reader.ReadLine();
+                if(String.IsNullOrEmpty(line))
+                {
+                    writer.WriteLine("Skipping debugger.");
+
+                    break;
+                }
             }
+            writer.WriteLine("Continuing...");
 
             Program.SubMain();
         }
